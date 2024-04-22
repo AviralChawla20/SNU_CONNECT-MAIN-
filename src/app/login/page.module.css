@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap");
+
+.main {
+  background-image: url("/loginImage.png");
+  height: 100vh;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: rgba(255, 255, 255, 0.7);
+  background-blend-mode: lighten;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.loginBox {
+  background-color: red;
+  height: 10px;
+  width: 40px;
+}
