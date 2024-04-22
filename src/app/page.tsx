@@ -1,4 +1,5 @@
 "use client";
+import { redirect } from "next/navigation";
 import styles from "./page.module.css";
 import Link from "next/link";
 
@@ -10,8 +11,12 @@ export default function Home() {
           <div className={styles.logo}>
             <img src="Picture1.jpg" alt="" />
           </div>
-          <button className={styles.btn}>Login</button>
-          <button className={styles.btn}>Sign up</button>
+          <Link href="/login">
+            <button className={styles.btn}>Login</button>
+          </Link>
+          <Link href="/signup">
+            <button className={styles.btn}>Sign up</button>
+          </Link>
         </nav>
       </div>
       <div className={styles.mainPage}>
@@ -26,7 +31,7 @@ export default function Home() {
             mentorship
           </p>
           <div className={styles.buttons}>
-            <Link href={"/login"}>
+            <Link href={"/signup"}>
               <button>Discover</button>
             </Link>
           </div>
