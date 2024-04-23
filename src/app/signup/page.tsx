@@ -36,12 +36,11 @@ export default function Signup() {
         body: JSON.stringify(userData),
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("User data sent successfully.");
 
         console.log(response);
-        <Link href="/main">
-        </Link>
+        window.location.href = "/login";
         // Optionally, reset form fields or show a success message
       } else {
         console.error("Failed to send user data.");

@@ -32,13 +32,22 @@ export default function Login() {
         body: JSON.stringify(formData),
       });
 
-      if (response.ok) {
+      if (response.status === 200) {
         console.log("Login successful.");
         // redirect("/main");
         window.location.href = "/main";
 
         // Optionally, redirect to another page or show a success message
-      } else {
+      }
+      else if (response.status === 401) {
+        console.error("Invalid password.");
+        // Handle error scenario
+      }
+      else if (response.status === 404) {
+        console.error("Invalid request body.");
+        // Handle error scenario
+      }
+      else {
         console.error("Login failed.");
         // Handle error scenario
       }

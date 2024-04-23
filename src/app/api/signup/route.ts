@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
         .select()
         if (data) {
             console.log("ho")
-            return NextResponse.json({ data: data })
+            return NextResponse.json({ data: data }, {status: 200})
         }
         if (error) {
             console.log("here")

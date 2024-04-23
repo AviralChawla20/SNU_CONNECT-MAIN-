@@ -31,6 +31,9 @@ export async function POST(req: NextRequest) {
                 console.log("ho")
                 return NextResponse.json({ message: "Login Successful" }, {status: 200}) 
             }
+            else {
+                return NextResponse.json({ message: "Invalid Password" }, { status: 401 })
+            }
             
         }
         // return NextResponse.json({ data: users }) >
@@ -43,7 +46,7 @@ export async function POST(req: NextRequest) {
     }
     catch (error) {
         console.log("haha")
-        return NextResponse.json({ error: "Invalid request body" })
+        return NextResponse.json({ error: "Invalid request body" }, { status: 404})
         }
 
 }
