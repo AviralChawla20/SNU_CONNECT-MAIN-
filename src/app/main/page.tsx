@@ -18,9 +18,13 @@ export default function Main() {
           </form>
         </div>
         <div className={styles.navbtn}>
-          <h4 className={styles.links}>Home</h4>
+          <Link href={"/"}>
+            <h4 className={styles.links}>Home</h4>
+          </Link>
           <h4 className={styles.links}>Internships</h4>
-          <FontAwesomeIcon icon={faUser} size="lg" className={styles.links} />
+          <Link href={"/profile"}>
+            <FontAwesomeIcon icon={faUser} size="lg" className={styles.links} />
+          </Link>
         </div>
       </nav>
     </main>
