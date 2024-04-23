@@ -14,6 +14,86 @@
 }
 .loginBox {
   background-color: rgb(255, 255, 255);
-  height: 25rem;
+  height: 30rem;
   width: 30rem;
+  display: flex;
+  flex-direction: column;
+}
+.logo {
+  margin-top: 15px;
+  width: 100%;
+  height: 3rem;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.logo img {
+  width: 13rem;
+}
+.credentials {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: slidein 1s ease-in-out;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form input {
+  margin: 20px;
+  height: 2rem;
+  width: 20rem;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-bottom: 2px solid black;
+}
+.login {
+  margin-top: 2rem;
+  margin-bottom: 20px;
+  height: 2rem;
+  width: 40%;
+  background-color: white;
+  border: 2px soild rgb(0, 0, 0);
+  outline: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.login:hover {
+  background-color: black;
+  color: white;
+}
+@keyframes slidein {
+  0% {
+    transform: translateX(-2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+}
+.role {
+  margin-top: 20px;
+  background-color: white;
+  border: 2px solid black;
+  color: black;
+  height: 2rem;
+  width: 7rem;
+  margin-left: 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+}
+.role:hover {
+  background-color: black;
+  color: white;
+}
+.role.selected {
+  background-color: black;
+  color: white;
 }
