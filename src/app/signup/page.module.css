@@ -68,16 +68,6 @@
   background-color: black;
   color: white;
 }
-@keyframes slidein {
-  0% {
-    transform: translateX(-2rem);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0rem);
-    opacity: 1;
-  }
-}
 .role {
   margin-top: 20px;
   background-color: white;
@@ -96,4 +86,14 @@
 .role.selected {
   background-color: black;
   color: white;
+}
+@keyframes slidein {
+  0% {
+    transform: translateX(-2rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
 }
