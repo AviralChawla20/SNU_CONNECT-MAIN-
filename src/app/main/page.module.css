@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=Platypi:ital,wght@0,300..800;1,300..800&display=swap");
+
 .main {
   background-color: rgb(255, 255, 255);
   width: 100%;
@@ -59,4 +61,84 @@
   background-size: cover;
   background-color: rgba(255, 255, 255, 0.7);
   background-blend-mode: lighten;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.section1 {
+  background-color: rgb(255, 255, 255);
+  height: 85vh;
+  width: 60%;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+}
+.header {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Platypi", sans-serif;
+  border-radius: 20px;
+}
+.tweets {
+  height: 80vh;
+  width: 100%;
+  border-radius: 20px;
+  overflow: scroll;
+}
+.section2 {
+  background-color: rgb(255, 255, 255);
+  height: 85vh;
+  width: 30%;
+  border-radius: 20px;
+}
+.blog {
+  height: 75vh;
+  border-radius: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 3rem;
+  font-family: "Platypi", sans-serif;
+  text-align: center;
+}
+.blog label {
+  font-size: 1.5rem;
+}
+
+.blog input {
+  margin-top: 10px;
+  height: 2rem;
+  width: 20rem;
+  background-color: white;
+  outline: none;
+  border: none;
+  border: 2px solid black;
+  margin-bottom: 20px;
+  border-radius: 10px;
+}
+.blog textarea {
+  width: 20rem;
+  background-color: white;
+  outline: none;
+  border: 2px solid black;
+  margin: 10px 0px;
+  padding: 5px;
+  resize: none;
+  border-radius: 20px;
+}
+.btn {
+  margin-top: 20px;
+  background-color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
+  height: 2.5rem;
+  width: 12rem;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  border: 2px solid black;
+  border-radius: 10px;
 }
