@@ -40,7 +40,7 @@ export default function Signup() {
         console.log("User data sent successfully.");
 
         console.log(response);
-        window.location.href = "/loginz";
+        window.location.href = "/login";
         // Optionally, reset form fields or show a success message
       } else {
         console.error("Failed to send user data.");
