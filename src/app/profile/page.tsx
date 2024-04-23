@@ -7,14 +7,26 @@ import Link from "next/link";
 
 export default function Profile() {
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [github, setGithub] = useState("");
+  const [linkedIn, setLinkedIn] = useState("");
   const [showSaveButton, setShowSaveButton] = useState(false);
 
   const handlePhoneNumberChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputPhoneNumber = e.target.value;
     setPhoneNumber(inputPhoneNumber);
-
-    // Check if the input phone number is 10 digits long
     setShowSaveButton(inputPhoneNumber.length === 10);
+  };
+
+  const handleGithubChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputGithub = e.target.value;
+    setGithub(inputGithub);
+    setShowSaveButton(inputGithub.trim() !== "" || linkedIn.trim() !== "");
+  };
+
+  const handleLinkedInChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputLinkedIn = e.target.value;
+    setLinkedIn(inputLinkedIn);
+    setShowSaveButton(inputLinkedIn.trim() !== "" || github.trim() !== "");
   };
 
   const handleSaveClick = () => {
@@ -54,7 +66,6 @@ export default function Profile() {
                 <label>Phone Number:</label>
                 <br />
                 <input
-                  type="text"
                   pattern="[0-9]*"
                   inputMode="numeric"
                   value={phoneNumber}
@@ -71,11 +82,11 @@ export default function Profile() {
               <form action="">
                 <label>Github:</label>
                 <br />
-                <input type="text" disabled />
+                <input type="text" onChange={handleGithubChange} />
                 <br />
-                <label>Linkedln:</label>
+                <label>LinkedIn:</label>
                 <br />
-                <input type="text" disabled />
+                <input type="text" onChange={handleLinkedInChange} />
                 <br />
                 <label>Role:</label>
                 <br />
