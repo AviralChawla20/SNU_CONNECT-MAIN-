@@ -36,6 +36,7 @@ export default function Signup() {
 
       if (response.ok) {
         console.log("User data sent successfully.");
+        console.log(response);
         // Optionally, reset form fields or show a success message
       } else {
         console.error("Failed to send user data.");
@@ -79,18 +80,16 @@ export default function Signup() {
             {/* Role buttons */}
             <div className={styles.roles}>
               <button
-                className={`${styles.role} ${
-                  selectedRole === "Alumni" ? styles.selected : ""
-                }`}
+                className={`${styles.role} ${selectedRole === "Alumni" ? styles.selected : ""
+                  }`}
                 onClick={() => handleRoleSelection("Alumni")}
                 type="button"
               >
                 Alumni
               </button>
               <button
-                className={`${styles.role} ${
-                  selectedRole === "Student" ? styles.selected : ""
-                }`}
+                className={`${styles.role} ${selectedRole === "Student" ? styles.selected : ""
+                  }`}
                 onClick={() => handleRoleSelection("Student")}
                 type="button"
               >
