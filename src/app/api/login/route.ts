@@ -12,14 +12,28 @@ export async function POST(req: NextRequest) {
         console.log(email, password)
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
+        console.log(hashedPassword)
         // const supabase = createClient()
         
         let { data: users, error } = await supabase
         .from('users')
             .select('password')
-            .eq(email, 'Equal to')
+            .eq("email", email)
+        // console.log("Users:",users)
 
+        
 
+        if (users) {
+            console.log("Inside", users[0].password, hashedPassword)
+            const validPassword = await bcryptjs.compare(password,users[0].password)
+            console.log(validPassword)
+            if (validPassword) {
+                console.log("ho")
+                return NextResponse.json({ message: "Login Successful" }, {status: 200}) 
+            }
+            
+        }
+        // return NextResponse.json({ data: users }) >
         // console.log(users.email)
         if (error) {
             console.log("here")

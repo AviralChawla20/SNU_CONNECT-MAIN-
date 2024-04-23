@@ -2,6 +2,8 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+// import { useRouter } from "next/router";
+import { redirect } from "next/navigation";
 
 // Existing imports and function declaration...
 
@@ -19,6 +21,8 @@ export default function Login() {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
+    // const router = useRouter();
+
     try {
       const response = await fetch("/api/login", {
         method: "POST",
@@ -30,6 +34,9 @@ export default function Login() {
 
       if (response.ok) {
         console.log("Login successful.");
+        // redirect("/main");
+        window.location.href = "/main";
+
         // Optionally, redirect to another page or show a success message
       } else {
         console.error("Login failed.");
