@@ -51,3 +51,8 @@
   color: black;
   text-decoration: none;
 }
+.content {
+  height: 91vh;
+  width: 100%;
+  background-image: url("/pratham.png");
+}
