@@ -35,6 +35,7 @@ export default function Login() {
       if (response.status === 200) {
         console.log("Login successful.");
         // redirect("/main");
+        localStorage.setItem("email", formData.email);
         window.location.href = "/main";
 
         // Optionally, redirect to another page or show a success message
