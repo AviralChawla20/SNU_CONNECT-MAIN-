@@ -2,6 +2,8 @@
 import { useState } from "react";
 import styles from "./page.module.css";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+
 
 export default function Signup() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
@@ -36,7 +38,10 @@ export default function Signup() {
 
       if (response.ok) {
         console.log("User data sent successfully.");
+
         console.log(response);
+        <Link href="/main">
+        </Link>
         // Optionally, reset form fields or show a success message
       } else {
         console.error("Failed to send user data.");

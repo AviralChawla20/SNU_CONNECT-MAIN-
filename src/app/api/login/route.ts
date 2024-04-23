@@ -7,22 +7,20 @@ import bcryptjs from "bcryptjs";
 export async function POST(req: NextRequest) {
     try {
         const reqBody = await req.json();
-        const { name, email, password, role } = reqBody
+        const { email, password } = reqBody
         console.log(reqBody)
-        console.log(email, password, role, name)
+        console.log(email, password)
         const salt = await bcryptjs.genSalt(10)
         const hashedPassword = await bcryptjs.hash(password, salt)
         // const supabase = createClient()
-        const { data, error } = await supabase
+        
+        let { data: users, error } = await supabase
         .from('users')
-        .insert([
-            { name: name, email: email, password: hashedPassword, role: role},
-        ])
-        .select()
-        if (data) {
-            console.log("ho")
-            return NextResponse.json({ data: data })
-        }
+            .select('password')
+            .eq(email, 'Equal to')
+
+
+        // console.log(users.email)
         if (error) {
             console.log("here")
             return NextResponse.json({ error: error.message })
