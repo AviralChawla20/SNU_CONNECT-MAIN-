@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Main() {
   const email = localStorage.getItem("email");
-  console.log(email)
+  console.log(email);
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
@@ -29,7 +29,33 @@ export default function Main() {
           </Link>
         </div>
       </nav>
-      <div className={styles.content}></div>
+      <div className={styles.content}>
+        <div className={styles.section1}>
+          <div className={styles.header}>
+            <h1>Tweets</h1>
+          </div>
+          <div className={styles.tweets}></div>
+        </div>
+        <div className={styles.section2}>
+          <div className={styles.header}>
+            <h1>What's on your mind</h1>
+          </div>
+          <div className={styles.blog}>
+            <form action="">
+              <label htmlFor="">Title:</label>
+              <br />
+              <input type="text" name="title" id="" required />
+              <br />
+              <label htmlFor="">Content:</label>
+              <br />
+              <textarea name="" id="" cols={30} rows={10}></textarea>
+            </form>
+            <button className={styles.btn} type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
     </main>
   );
 }
