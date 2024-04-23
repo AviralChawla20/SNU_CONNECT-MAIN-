@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 // import { createClient } from "../../../../utils/supabase/client";
 import { supabase } from '../../../../utils/supabase/client'
 import bcryptjs from "bcryptjs";
+// import * as nodemailer from 'nodemailer';
 // import { supabase } from '@/supabase';
 
 export async function POST(req: NextRequest) {
