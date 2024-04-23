@@ -27,6 +27,7 @@ export default function Main() {
           </Link>
         </div>
       </nav>
+      <div className={styles.content}></div>
     </main>
   );
 }
