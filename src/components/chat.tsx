@@ -7,6 +7,7 @@ const email = localStorage.getItem("email") || "";
 const parts = email.split("@");
 const result = parts[0]
 const APP_ID = "43F443C3-8B99-437A-9B02-57BE973CFFA9";
+
 const USER_ID = result;
 console.log(USER_ID);
 
