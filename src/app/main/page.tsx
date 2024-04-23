@@ -57,7 +57,7 @@ export default function Main() {
         </div>
         <div className={styles.section2}>
           <div className={styles.header}>
-            <h1>What's on your mind</h1>
+            <h1>What&apos;s on your mind</h1>
           </div>
           <div className={styles.blog}>
             <form action="">
