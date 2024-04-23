@@ -6,6 +6,8 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export default function Main() {
+  const email = localStorage.getItem("email");
+  console.log(email)
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
