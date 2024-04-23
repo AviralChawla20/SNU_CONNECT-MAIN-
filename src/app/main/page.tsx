@@ -18,7 +18,7 @@ export default function Main() {
           </form>
         </div>
         <div className={styles.navbtn}>
-          <Link href={"/"}>
+          <Link href={"/main"}>
             <h4 className={styles.links}>Home</h4>
           </Link>
           <h4 className={styles.links}>Internships</h4>
