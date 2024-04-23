@@ -39,9 +39,9 @@ export async function POST(req: NextRequest) {
             To get started, please complete your profile and explore the various groups and discussions available. Don't hesitate to reach out if you have any questions or need assistance navigating the platform.
             
             We're excited to see you thrive on SNU Connect and look forward to connecting with you online!
-            
+    
             Best regards,
-            SNUConnect`
+            SNUConnect `
         };
         
         // Send email
