@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,63 +21,58 @@ interface newInternship {
   role: string;
   description: string;
   email: string;
-
 }
 
 export default function Internship() {
   var ro = localStorage.getItem("role");
   const email = localStorage.getItem("email") || "";
   const isStudent = ro === "Student";
-  const [internship, setInternship] = useState<Internship[]>([]);
-  const [newInternships, setNewInternship] = useState<newInternship[]>([]);
+  const [internships, setInternships] = useState<Internship[]>([]);
+  const [newInternships, setNewInternships] = useState<newInternship[]>([]);
   const [role, setRole] = useState("");
   const [company, setCompany] = useState("");
   const [stipend, setStipend] = useState(0);
-  const [locationn, setLocation] = useState("");
+  const [location, setLocation] = useState("");
   const [description, setDescription] = useState("");
+
   useEffect(() => {
-    const fetchUserData = async () => {
+    const fetchInternshipsData = async () => {
       try {
         const response = await fetch("/api/internships", { method: "GET" });
         if (response.ok) {
           const data = await response.json();
-          setInternship((data as Internship[]).reverse());
-          console.log(data)// Set the fetched tweets in state
+          setInternships((data as Internship[]).reverse());
         } else {
-          throw new Error("Failed to fetch user data");
+          throw new Error("Failed to fetch internships data");
         }
       } catch (error) {
-        console.error("Error fetching user data:", error);
+        console.error("Error fetching internships data:", error);
       }
     };
 
-    fetchUserData(); // Call the fetchUserData function when component mounts
+    fetchInternshipsData();
   }, []);
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault(); // Prevent the default form submission behavior
+    event.preventDefault();
 
-    // Create a new tweet object with the title and content
     const newInternship: newInternship = {
       company: company,
       stipend: stipend,
-      location: locationn,
+      location: location,
       role: role,
       description: description,
-      email: email // You can replace this with the user's name if available
+      email: email,
     };
 
-    // Update the state with the new tweet
-    setNewInternship([...newInternships, newInternship]);
+    setNewInternships([...newInternships, newInternship]);
 
-    // Reset the form fields
     setRole("");
     setCompany("");
     setStipend(0);
     setLocation("");
     setDescription("");
 
-    // Optional: Send the new tweet data to the server for saving in the database
     try {
       const response = await fetch("/api/internships", {
         method: "POST",
@@ -87,18 +82,12 @@ export default function Internship() {
         body: JSON.stringify(newInternship),
       });
       if (!response.ok) {
-        throw new Error("Failed to save tweet");
-      }
-      else {
-        console.log("Internship data sent successfully.");
-        console.log(response)
-        // Optionally, reset form fields or show a success message
+        throw new Error("Failed to save internship");
       }
     } catch (error) {
-      console.error("Error saving tweet:", error);
+      console.error("Error saving internship:", error);
     }
     window.location.reload();
-
   };
 
   return (
@@ -128,11 +117,33 @@ export default function Internship() {
         </div>
       </nav>
       <div className={styles.content}>
-        <div className={styles.section1} style={{ width: isStudent ? "80%" : "60%" }}>
+        <div
+          className={styles.section1}
+          style={{ width: isStudent ? "80%" : "60%" }}
+        >
           <div className={styles.header}>
             <h1>Internships</h1>
           </div>
-          <div className={styles.tweets}></div>
+          <div className={styles.tweets}>
+            {internships.map((internship, index) => (
+              <div key={index} className={styles.tweet}>
+                <h2>{internship.name}</h2>
+                <h3>{internship.role}</h3>
+                <p>
+                  <strong>Company:</strong> {internship.company}
+                </p>
+                <p>
+                  <strong>Stipend:</strong> {internship.stipend}
+                </p>
+                <p>
+                  <strong>Location:</strong> {internship.location}
+                </p>
+                <p>
+                  <strong>Description:</strong> {internship.description}
+                </p>
+              </div>
+            ))}
+          </div>
         </div>
         {!isStudent && (
           <div className={styles.section2}>
@@ -141,25 +152,55 @@ export default function Internship() {
             </div>
             <div className={styles.blog}>
               <form action="" onSubmit={handleSubmit}>
-                <label htmlFor="">Role:</label>
+                <label htmlFor="role">Role:</label>
                 <br />
-                <input type="text" onChange={(e) => setRole(e.target.value)} name="title" id="" required />
+                <input
+                  type="text"
+                  id="role"
+                  onChange={(e) => setRole(e.target.value)}
+                  name="role"
+                  required
+                />
                 <br />
-                <label htmlFor="">Company:</label>
+                <label htmlFor="company">Company:</label>
                 <br />
-                <input type="text" onChange={(e) => setCompany(e.target.value)} name="title" id="" required />
+                <input
+                  type="text"
+                  id="company"
+                  onChange={(e) => setCompany(e.target.value)}
+                  name="company"
+                  required
+                />
                 <br />
-                <label htmlFor="">Stipend:</label>
+                <label htmlFor="stipend">Stipend:</label>
                 <br />
-                <input type="number" onChange={(e) => setStipend(parseInt(e.target.value))} name="title" id="" required />
+                <input
+                  type="number"
+                  id="stipend"
+                  onChange={(e) => setStipend(parseInt(e.target.value))}
+                  name="stipend"
+                  required
+                />
                 <br />
-                <label htmlFor="">Location:</label>
+                <label htmlFor="location">Location:</label>
                 <br />
-                <input type="text" onChange={(e) => setLocation(e.target.value)} name="title" id="" required />
+                <input
+                  type="text"
+                  id="location"
+                  onChange={(e) => setLocation(e.target.value)}
+                  name="location"
+                  required
+                />
                 <br />
-                <label htmlFor="">Description:</label>
+                <label htmlFor="description">Description:</label>
                 <br />
-                <textarea name="" onChange={(e) => setDescription(e.target.value)} id="" cols={30} rows={10}></textarea>
+                <textarea
+                  id="description"
+                  onChange={(e) => setDescription(e.target.value)}
+                  name="description"
+                  cols={30}
+                  rows={10}
+                ></textarea>
                 <button className={styles.btn} type="submit">
                   Submit
                 </button>
