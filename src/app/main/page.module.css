@@ -160,6 +160,31 @@
   background-color: black;
   color: white;
 }
+.user {
+  height: 5vh;
+  width: 100%;
+  background-color: white;
+  color: rgb(0, 0, 0);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background-color: red;
+}
+.overlay {
+  position: absolute;
+  top: 3rem; /* Adjust this value to position the overlay below the search bar */
+  left: 40%;
+  width: 20vw;
+  height: 20vh; /* Semi-transparent black overlay */
+  z-index: 2; /* Ensure the overlay is on top of other content */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  border: 2px solid black;
+  border-top: none;
+}
+
 @keyframes slidein {
   0% {
     transform: translateX(-2rem);

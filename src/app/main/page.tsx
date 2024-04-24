@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { emitWarning } from "process";
-import { supabase } from '../../../utils/supabase/client'
+import { supabase } from "../../../utils/supabase/client";
 
 interface Tweet {
   tweet: string;
@@ -14,13 +14,13 @@ interface Tweet {
 }
 
 interface newTweet {
-  tweet: string,
-  title: string,
-  email: string
+  tweet: string;
+  title: string;
+  email: string;
 }
 
 export default function Main() {
-  const email = localStorage.getItem("email") || ""
+  const email = localStorage.getItem("email") || "";
   const [tweets, setTweets] = useState<Tweet[]>([]); // State to hold the fetched tweets
   const [newTweets, setNewTweets] = useState<newTweet[]>([]); // State to hold the new tweets
   const [title, setTitle] = useState(""); // State for the title input
@@ -51,7 +51,7 @@ export default function Main() {
     const newTweet: newTweet = {
       title: title,
       tweet: content,
-      email: email // You can replace this with the user's name if available
+      email: email, // You can replace this with the user's name if available
     };
 
     // Update the state with the new tweet
@@ -77,26 +77,23 @@ export default function Main() {
       console.error("Error saving tweet:", error);
     }
     window.location.reload();
-
   };
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputSearch = e.target.value;
-    console.log(inputSearch)
+    console.log(inputSearch);
     let { data: users, error } = await supabase
-      .from('users')
-      .select("*")
-      .ilike("name", `${inputSearch}%`)
+      .from("users")
+      .select("name")
+      .ilike("name", `${inputSearch}%`);
 
     if (users) {
-      console.log(users)
+      console.log(users);
       // console.log("Emty")
+    } else {
+      console.error(error);
     }
-    else {
-      console.error(error)
-    }
-
-  }
+  };
 
   return (
     <main className={styles.main}>
