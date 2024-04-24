@@ -19,6 +19,10 @@ interface newTweet {
   email: string;
 }
 
+interface User {
+  name: string;
+}
+
 export default function Main() {
   const email = localStorage.getItem("email") || "";
   const [searchResults, setSearchResults] = useState<User[]>([]);
