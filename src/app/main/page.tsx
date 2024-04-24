@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { emitWarning } from "process";
 
 interface Tweet {
   tweet: string;
@@ -11,8 +12,16 @@ interface Tweet {
   name: string;
 }
 
+interface newTweet {
+  tweet: string,
+  title: string,
+  email: string
+}
+
 export default function Main() {
+  const email = localStorage.getItem("email") || ""
   const [tweets, setTweets] = useState<Tweet[]>([]); // State to hold the fetched tweets
+  const [newTweets, setNewTweets] = useState<newTweet[]>([]); // State to hold the new tweets
   const [title, setTitle] = useState(""); // State for the title input
   const [content, setContent] = useState(""); // State for the content input
 
@@ -38,14 +47,14 @@ export default function Main() {
     event.preventDefault(); // Prevent the default form submission behavior
 
     // Create a new tweet object with the title and content
-    const newTweet: Tweet = {
+    const newTweet: newTweet = {
       title: title,
       tweet: content,
-      name: "Your Name", // You can replace this with the user's name if available
+      email: email // You can replace this with the user's name if available
     };
 
     // Update the state with the new tweet
-    setTweets([...tweets, newTweet]);
+    setNewTweets([...newTweets, newTweet]);
 
     // Reset the form fields
     setTitle("");
@@ -53,7 +62,7 @@ export default function Main() {
 
     // Optional: Send the new tweet data to the server for saving in the database
     try {
-      const response = await fetch("/api/saveTweet", {
+      const response = await fetch("/api/tweets", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -66,6 +75,8 @@ export default function Main() {
     } catch (error) {
       console.error("Error saving tweet:", error);
     }
+    window.location.reload();
+
   };
 
   return (

@@ -43,7 +43,7 @@ const POST = async (req: any) => {
         // return NextResponse.json({ message: "Login Successful" }, { status: 200 })
     }
     catch (error) {
-        console.log("haha")
+        console.log("hahapls")
         return { error: "Invalid request body" }
     }
 }
