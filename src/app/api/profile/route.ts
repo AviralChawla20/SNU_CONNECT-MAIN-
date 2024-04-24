@@ -32,7 +32,7 @@ const GET = async (req: any) => {
             .eq("email", email)
         if (users) {
             console.log(users[0].email)
-            return NextResponse.json({ email: users[0].email, name: users[0].name, phone: users[0].phone, github: users[0].github, linkedin: users[0].linkedin}, { status: 200 })
+            return NextResponse.json({ email: users[0].email, name: users[0].name, phone: users[0].phone, github: users[0].github, linkedin: users[0].linkedin,role:users[0].role}, { status: 200 })
         }
         
         
