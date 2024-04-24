@@ -4,6 +4,7 @@ import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+// import { supabase } from "../../";
 
 export default function Profile() {
   const email = localStorage.getItem("email");
@@ -124,6 +125,7 @@ export default function Profile() {
     localStorage.clear();
 
   };
+
 
   return (
     <main className={styles.main}>
