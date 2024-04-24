@@ -31,7 +31,7 @@ export default function Main() {
         const response = await fetch("/api/tweets", { method: "GET" });
         if (response.ok) {
           const data = await response.json();
-          setTweets(data as Tweet[]); // Set the fetched tweets in state
+          setTweets((data as Tweet[]).reverse()); // Set the fetched tweets in state
         } else {
           throw new Error("Failed to fetch user data");
         }
