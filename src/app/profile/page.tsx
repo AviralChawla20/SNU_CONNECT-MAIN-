@@ -13,7 +13,7 @@ export default function Profile() {
     phone: "",
     github: "",
     linkedin: "",
-    role:"",
+    role: "",
   });
   const [phoneNumber, setPhoneNumber] = useState("");
   const [github, setGithub] = useState("");
@@ -38,7 +38,7 @@ export default function Profile() {
           setPhoneNumber(data.phone);
           setRole(data.role)
           console.log(phoneNumber);
-          
+
           console.log(data.role);
           localStorage.setItem("role", data.role);
 
@@ -46,12 +46,16 @@ export default function Profile() {
           // console.log(github);
           setName(data.name);
           setLinkedIn(data.linkedin);
-          
-          setFormData({ ...formData, ["phone"]: data.phone });
-          setFormData({ ...formData, ["linkedin"]: data.linkedin });
-          setFormData({ ...formData, ["github"]: data.github });
-          setFormData({ ...formData, ["name"]: data.name });
-          setFormData({ ...formData, ["role"]: data.role });
+
+          setFormData({
+            ...formData,
+            phone: data.phone,
+            github: data.github,
+            linkedin: data.linkedin,
+            name: data.name,
+            role: data.role,
+          });
+          // console.log(role)
         } else {
           throw new Error("Failed to fetch user data");
         }
@@ -68,7 +72,8 @@ export default function Profile() {
     setPhoneNumber(inputPhoneNumber);
     setShowSaveButton(inputPhoneNumber.length === 10);
     // const { name, value } = event.target;
-    // setFormData({ ...formData, ["phone"]: inputPhoneNumber });
+    setFormData({ ...formData, ["phone"]: inputPhoneNumber });
+
   };
 
   const handleGithubChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -88,6 +93,31 @@ export default function Profile() {
   const handleSaveClick = () => {
     // Handle save action here
     console.log(formData);
+    const saveData = async () => {
+      try {
+        const response = await fetch("/api/profile", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+
+        if (response.status === 200) {
+          console.log("Profile updated successfully.");
+          // redirect("/main");
+          // localStorage.setItem("email", formData.email);
+          // window.location.href = "/main";
+        } else {
+          console.error("Failed to update profile.");
+          // Handle error scenario
+        }
+      } catch (error) {
+        console.error("Error:", error);
+        // Handle error scenario
+      }
+    };
+    saveData();
   };
 
   const handleLogOut = () => {
@@ -105,7 +135,7 @@ export default function Profile() {
         </div>
         <div className={styles.navbtn}>
           <Link href={"/"}>
-            <button onClick = {handleLogOut} className={styles.btn}>Log out</button>
+            <button onClick={handleLogOut} className={styles.btn}>Log out</button>
           </Link>
         </div>
       </nav>
@@ -160,7 +190,7 @@ export default function Profile() {
                 <br />
                 <label>Role:</label>
                 <br />
-                <input type="text" value={role||""} disabled />
+                <input type="text" value={role || ""} disabled />
               </form>
             </div>
           </div>

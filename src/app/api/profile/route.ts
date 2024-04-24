@@ -7,10 +7,21 @@ import { supabase } from '../../../../utils/supabase/client'
 const POST = async (req: any) => {
     try {
         const reqBody = await req.json();
-        const { email } = reqBody
+        const { email, name, phone, github, linkedin } = reqBody
         console.log(reqBody)
         console.log(email)
-        return NextResponse.json({ message: "Login Successful" }, { status: 200 })
+        const { data, error } = await supabase
+        .from('users')
+        .update({ phone: phone, github: github, linkedin: linkedin, name: name})
+        .eq('email', email)
+            .select()
+        if (data) {
+            // console.log("Hello")
+            return NextResponse.json({ data: data }, {status: 200})
+        }
+
+
+        return NextResponse.json({ message: "Updated Successfully" }, { status: 200 })
     }
     catch (error) {
         console.log("haha")
