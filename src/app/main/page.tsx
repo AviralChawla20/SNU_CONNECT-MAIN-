@@ -5,15 +5,24 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
+interface Tweet {
+  tweet: string;
+  title: string;
+  name: string;
+}
+
 export default function Main() {
-  const email = localStorage.getItem("email");
+  const [tweets, setTweets] = useState<Tweet[]>([]); // State to hold the fetched tweets
+  const [title, setTitle] = useState(""); // State for the title input
+  const [content, setContent] = useState(""); // State for the content input
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         const response = await fetch("/api/tweets", { method: "GET" });
         if (response.ok) {
           const data = await response.json();
-          console.log(data);
+          setTweets(data as Tweet[]); // Set the fetched tweets in state
         } else {
           throw new Error("Failed to fetch user data");
         }
@@ -24,7 +33,41 @@ export default function Main() {
 
     fetchUserData(); // Call the fetchUserData function when component mounts
   }, []);
-  console.log(email);
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault(); // Prevent the default form submission behavior
+
+    // Create a new tweet object with the title and content
+    const newTweet: Tweet = {
+      title: title,
+      tweet: content,
+      name: "Your Name", // You can replace this with the user's name if available
+    };
+
+    // Update the state with the new tweet
+    setTweets([...tweets, newTweet]);
+
+    // Reset the form fields
+    setTitle("");
+    setContent("");
+
+    // Optional: Send the new tweet data to the server for saving in the database
+    try {
+      const response = await fetch("/api/saveTweet", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTweet),
+      });
+      if (!response.ok) {
+        throw new Error("Failed to save tweet");
+      }
+    } catch (error) {
+      console.error("Error saving tweet:", error);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
@@ -56,25 +99,49 @@ export default function Main() {
           <div className={styles.header}>
             <h1>Tweets</h1>
           </div>
-          <div className={styles.tweets}></div>
+          <div className={styles.tweets}>
+            {tweets.map((tweet, index) => (
+              <div key={index} className={styles.tweet}>
+                <h2>{tweet.name}</h2>
+                <h4>{tweet.title}</h4>
+                <p>{tweet.tweet}</p>
+              </div>
+            ))}
+          </div>
         </div>
         <div className={styles.section2}>
           <div className={styles.header}>
             <h1>What&apos;s on your mind</h1>
           </div>
           <div className={styles.blog}>
-            <form action="">
-              <label htmlFor="">Title:</label>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="title">Title:</label>
               <br />
-              <input type="text" name="title" id="" required />
+              <input
+                type="text"
+                id="title"
+                name="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                required
+              />
               <br />
-              <label htmlFor="">Content:</label>
+              <label htmlFor="content">Content:</label>
               <br />
-              <textarea name="" id="" cols={30} rows={10}></textarea>
+              <textarea
+                id="content"
+                name="content"
+                cols={30}
+                rows={10}
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+              ></textarea>
+              <br />
+              <button className={styles.btn} type="submit">
+                Submit
+              </button>
             </form>
-            <button className={styles.btn} type="submit">
-              Submit
-            </button>
           </div>
         </div>
       </div>
