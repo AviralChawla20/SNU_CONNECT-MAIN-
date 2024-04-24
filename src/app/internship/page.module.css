@@ -153,6 +153,12 @@
   border: 2px solid rgb(0, 0, 0);
   margin-bottom: 5px;
   border-radius: 10px;
+  transition: filter 0.3s ease-in-out;
+}
+
+.tweet:hover {
+  background-color: black;
+  color: white;
 }
 @keyframes slidein {
   0% {

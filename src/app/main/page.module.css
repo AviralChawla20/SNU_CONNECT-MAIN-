@@ -155,6 +155,11 @@
   margin-bottom: 5px;
   border-radius: 10px;
 }
+
+.tweet:hover {
+  background-color: black;
+  color: white;
+}
 @keyframes slidein {
   0% {
     transform: translateX(-2rem);
