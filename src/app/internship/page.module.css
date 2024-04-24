@@ -145,6 +145,15 @@
   border: 2px solid black;
   border-radius: 10px;
 }
+.tweets {
+  padding: 20px 20px;
+}
+.tweet {
+  padding: 10px 5px;
+  border: 2px solid rgb(0, 0, 0);
+  margin-bottom: 5px;
+  border-radius: 10px;
+}
 @keyframes slidein {
   0% {
     transform: translateX(-2rem);
