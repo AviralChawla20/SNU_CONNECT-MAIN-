@@ -90,6 +90,11 @@ export default function Profile() {
     console.log(formData);
   };
 
+  const handleLogOut = () => {
+    localStorage.clear();
+
+  };
+
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
@@ -100,7 +105,7 @@ export default function Profile() {
         </div>
         <div className={styles.navbtn}>
           <Link href={"/"}>
-            <button className={styles.btn}>Log out</button>
+            <button onClick = {handleLogOut} className={styles.btn}>Log out</button>
           </Link>
         </div>
       </nav>
