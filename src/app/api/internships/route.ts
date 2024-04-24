@@ -64,7 +64,8 @@ const GET = async (req: any) => {
             company,
             name,
             stipend,
-            location
+            location,
+            description
         `)
 
         if (tweets) {

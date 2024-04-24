@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { emitWarning } from "process";
+import { supabase } from '../../../utils/supabase/client'
 
 interface Tweet {
   tweet: string;
@@ -79,6 +80,24 @@ export default function Main() {
 
   };
 
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const inputSearch = e.target.value;
+    console.log(inputSearch)
+    let { data: users, error } = await supabase
+      .from('users')
+      .select("*")
+      .ilike("name", `${inputSearch}%`)
+
+    if (users) {
+      console.log(users)
+      // console.log("Emty")
+    }
+    else {
+      console.error(error)
+    }
+
+  }
+
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
@@ -87,7 +106,7 @@ export default function Main() {
         </div>
         <div className={styles.searchbar}>
           <form action="">
-            <input type="text" placeholder="Search" />
+            <input onChange={handleSearch} type="text" placeholder="Search" />
           </form>
         </div>
         <div className={styles.navbtn}>
