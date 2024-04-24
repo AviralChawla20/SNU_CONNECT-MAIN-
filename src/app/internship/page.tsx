@@ -5,26 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-export default function Main() {
-  const email = localStorage.getItem("email");
-  useEffect(() => {
-    const fetchUserData = async () => {
-      try {
-        const response = await fetch("/api/tweets", { method: "GET" });
-        if (response.ok) {
-          const data = await response.json();
-          console.log(data);
-        } else {
-          throw new Error("Failed to fetch user data");
-        }
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-
-    fetchUserData(); // Call the fetchUserData function when component mounts
-  }, []);
-  console.log(email);
+export default function Internship() {
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
@@ -54,27 +35,39 @@ export default function Main() {
       <div className={styles.content}>
         <div className={styles.section1}>
           <div className={styles.header}>
-            <h1>Tweets</h1>
+            <h1>Internships</h1>
           </div>
           <div className={styles.tweets}></div>
         </div>
         <div className={styles.section2}>
           <div className={styles.header}>
-            <h1>What&apos;s on your mind</h1>
+            <h1>Internship Details</h1>
           </div>
           <div className={styles.blog}>
             <form action="">
-              <label htmlFor="">Title:</label>
+              <label htmlFor="">Role:</label>
               <br />
               <input type="text" name="title" id="" required />
               <br />
-              <label htmlFor="">Content:</label>
+              <label htmlFor="">Company:</label>
+              <br />
+              <input type="text" name="title" id="" required />
+              <br />
+              <label htmlFor="">Stipend:</label>
+              <br />
+              <input type="text" name="title" id="" required />
+              <br />
+              <label htmlFor="">Location:</label>
+              <br />
+              <input type="text" name="title" id="" required />
+              <br />
+              <label htmlFor="">Description:</label>
               <br />
               <textarea name="" id="" cols={30} rows={10}></textarea>
+              <button className={styles.btn} type="submit">
+                Submit
+              </button>
             </form>
-            <button className={styles.btn} type="submit">
-              Submit
-            </button>
           </div>
         </div>
       </div>
