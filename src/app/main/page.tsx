@@ -131,7 +131,6 @@ export default function Main() {
           </form>
           {searchResults.length > 0 && (
             <div className={styles.searchResults}>
-              <h3>Search Results:</h3>
               <ul>
                 {searchResults.map((user, index) => (
                   <li key={index}>{user.name}</li>

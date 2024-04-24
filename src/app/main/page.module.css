@@ -170,6 +170,23 @@
   justify-content: center;
   background-color: red;
 }
+.searchResults {
+  background-color: white;
+  color: black;
+  transform: translateY(15rem) translateX(-20rem);
+}
+.searchResults ul {
+  width: 15rem;
+  list-style-type: none;
+  text-align: center;
+}
+.searchResults li {
+  border-bottom: 2px solid black;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .overlay {
   position: absolute;
   top: 3rem; /* Adjust this value to position the overlay below the search bar */
