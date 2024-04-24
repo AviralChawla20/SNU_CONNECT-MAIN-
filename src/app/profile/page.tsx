@@ -23,16 +23,17 @@ export default function Profile() {
   // const email = localStorage.getItem("email");
 
   useEffect(() => {
-
     const fetchUserData = async () => {
       try {
-        const response = await fetch("/api/profile?email=" + email, { method: "GET" });
+        const response = await fetch("/api/profile?email=" + email, {
+          method: "GET",
+        });
         if (response.ok) {
           const data = await response.json();
-          console.log(data)
+          console.log(data);
           setUserData(data);
           setPhoneNumber(data.phone);
-          console.log(phoneNumber)
+          console.log(phoneNumber);
           setGithub(data.github);
           // console.log(github);
           setName(data.name);
@@ -42,7 +43,6 @@ export default function Profile() {
           setFormData({ ...formData, ["linkedin"]: data.linkedin });
           setFormData({ ...formData, ["github"]: data.github });
           setFormData({ ...formData, ["name"]: data.name });
-
         } else {
           throw new Error("Failed to fetch user data");
         }
@@ -130,15 +130,23 @@ export default function Profile() {
               <form action="">
                 <label>Github:</label>
                 <br />
-                <input type="text" value={github} onChange={handleGithubChange} />
+                <input
+                  type="text"
+                  value={github}
+                  onChange={handleGithubChange}
+                />
                 <br />
                 <label>LinkedIn:</label>
                 <br />
-                <input type="text" value={linkedIn} onChange={handleLinkedInChange} />
+                <input
+                  type="text"
+                  value={linkedIn}
+                  onChange={handleLinkedInChange}
+                />
                 <br />
                 <label>Role:</label>
                 <br />
-                <input type="text" disabled placeholder="Student" />
+                <input type="text" disabled />
               </form>
             </div>
           </div>
