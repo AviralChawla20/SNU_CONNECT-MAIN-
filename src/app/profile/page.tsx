@@ -13,13 +13,16 @@ export default function Profile() {
     phone: "",
     github: "",
     linkedin: "",
+    role:"",
   });
   const [phoneNumber, setPhoneNumber] = useState("");
   const [github, setGithub] = useState("");
   const [linkedIn, setLinkedIn] = useState("");
   const [name, setName] = useState("");
+  const [role, setRole] = useState("");
   const [showSaveButton, setShowSaveButton] = useState(false);
   const [userData, setUserData] = useState(null);
+
   // const email = localStorage.getItem("email");
 
   useEffect(() => {
@@ -33,16 +36,22 @@ export default function Profile() {
           console.log(data);
           setUserData(data);
           setPhoneNumber(data.phone);
+          setRole(data.role)
           console.log(phoneNumber);
+          
+          console.log(data.role);
+          localStorage.setItem("role", data.role);
+
           setGithub(data.github);
           // console.log(github);
           setName(data.name);
           setLinkedIn(data.linkedin);
-          console.log(linkedIn);
+          
           setFormData({ ...formData, ["phone"]: data.phone });
           setFormData({ ...formData, ["linkedin"]: data.linkedin });
           setFormData({ ...formData, ["github"]: data.github });
           setFormData({ ...formData, ["name"]: data.name });
+          setFormData({ ...formData, ["role"]: data.role });
         } else {
           throw new Error("Failed to fetch user data");
         }
@@ -146,7 +155,7 @@ export default function Profile() {
                 <br />
                 <label>Role:</label>
                 <br />
-                <input type="text" disabled />
+                <input type="text" value={role||""} disabled />
               </form>
             </div>
           </div>

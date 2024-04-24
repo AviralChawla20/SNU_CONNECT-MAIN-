@@ -1,4 +1,4 @@
-"use client";
+"use client"
 import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,6 +6,9 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export default function Internship() {
+  var ro = localStorage.getItem("role");
+  const isStudent = ro === "Student";
+
   return (
     <main className={styles.main}>
       <nav className={styles.navbar}>
@@ -33,43 +36,45 @@ export default function Internship() {
         </div>
       </nav>
       <div className={styles.content}>
-        <div className={styles.section1}>
+        <div className={styles.section1} style={{ width: isStudent ? "80%" : "60%" }}>
           <div className={styles.header}>
             <h1>Internships</h1>
           </div>
           <div className={styles.tweets}></div>
         </div>
-        <div className={styles.section2}>
-          <div className={styles.header}>
-            <h1>Internship Details</h1>
+        {!isStudent && (
+          <div className={styles.section2}>
+            <div className={styles.header}>
+              <h1>Internship Details</h1>
+            </div>
+            <div className={styles.blog}>
+              <form action="">
+                <label htmlFor="">Role:</label>
+                <br />
+                <input type="text" name="title" id="" required />
+                <br />
+                <label htmlFor="">Company:</label>
+                <br />
+                <input type="text" name="title" id="" required />
+                <br />
+                <label htmlFor="">Stipend:</label>
+                <br />
+                <input type="text" name="title" id="" required />
+                <br />
+                <label htmlFor="">Location:</label>
+                <br />
+                <input type="text" name="title" id="" required />
+                <br />
+                <label htmlFor="">Description:</label>
+                <br />
+                <textarea name="" id="" cols={30} rows={10}></textarea>
+                <button className={styles.btn} type="submit">
+                  Submit
+                </button>
+              </form>
+            </div>
           </div>
-          <div className={styles.blog}>
-            <form action="">
-              <label htmlFor="">Role:</label>
-              <br />
-              <input type="text" name="title" id="" required />
-              <br />
-              <label htmlFor="">Company:</label>
-              <br />
-              <input type="text" name="title" id="" required />
-              <br />
-              <label htmlFor="">Stipend:</label>
-              <br />
-              <input type="text" name="title" id="" required />
-              <br />
-              <label htmlFor="">Location:</label>
-              <br />
-              <input type="text" name="title" id="" required />
-              <br />
-              <label htmlFor="">Description:</label>
-              <br />
-              <textarea name="" id="" cols={30} rows={10}></textarea>
-              <button className={styles.btn} type="submit">
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
+        )}
       </div>
     </main>
   );
