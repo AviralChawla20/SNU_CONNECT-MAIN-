@@ -40,7 +40,24 @@ export default function Main() {
         console.error("Error fetching user data:", error);
       }
     };
-
+    const fetchProfileData = async () => {
+      try {
+        const response = await fetch("/api/profile?email=" + email, {
+          method: "GET",
+        });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data);
+          localStorage.setItem("role", data.role);
+          // console.log(role)
+        } else {
+          throw new Error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+    fetchProfileData();
     fetchUserData(); // Call the fetchUserData function when component mounts
   }, []);
 
