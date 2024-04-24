@@ -7,7 +7,7 @@ import { supabase } from '../../../../utils/supabase/client'
 const POST = async (req: any) => {
     try {
         const reqBody = await req.json();
-        const { email, tweet, title } = reqBody
+        const { email, company, role, stipend, location} = reqBody
         console.log(reqBody)
         console.log(email)
         var name2 = ""
@@ -27,9 +27,9 @@ const POST = async (req: any) => {
 
 
         const { data, error } = await supabase
-        .from('tweets')
+        .from('internships')
         .insert([
-            { title: title, email: email, tweet: tweet, name: name2},
+            { role: role, email: email, company: company, location: location, stipend: stipend, name: name2},
         ])
             .select()
         if (data) {
@@ -43,7 +43,7 @@ const POST = async (req: any) => {
         // return NextResponse.json({ message: "Login Successful" }, { status: 200 })
     }
     catch (error) {
-        console.log("haha")
+        console.log("hahapls")
         return { error: "Invalid request body" }
     }
 }
@@ -58,11 +58,13 @@ const GET = async (req: any) => {
 
         
         let { data: tweets, error } = await supabase
-        .from('tweets')
+        .from('internships')
         .select(`
-            tweet,
-            title,
-            name
+            role,
+            company,
+            name,
+            stipend,
+            location
         `)
 
         if (tweets) {
