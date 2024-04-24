@@ -48,7 +48,7 @@ export default function Main() {
               <br />
               <label htmlFor="">Content:</label>
               <br />
-              <textarea name="" id="" cols={30} rows={10}></textarea>
+              <textarea name="" id="" cols={30} rows={20}></textarea>
             </form>
             <button className={styles.btn} type="submit">
               Submit
