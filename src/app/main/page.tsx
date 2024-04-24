@@ -21,6 +21,7 @@ interface newTweet {
 
 export default function Main() {
   const email = localStorage.getItem("email") || "";
+  const [searchResults, setSearchResults] = useState<User[]>([]);
   const [tweets, setTweets] = useState<Tweet[]>([]); // State to hold the fetched tweets
   const [newTweets, setNewTweets] = useState<newTweet[]>([]); // State to hold the new tweets
   const [title, setTitle] = useState(""); // State for the title input
@@ -98,6 +99,10 @@ export default function Main() {
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputSearch = e.target.value;
+    if (inputSearch.length === 0) {
+      setSearchResults([]); // Clear search results if search input is empty
+      return;
+    }
     console.log(inputSearch);
     let { data: users, error } = await supabase
       .from("users")
@@ -106,9 +111,11 @@ export default function Main() {
 
     if (users) {
       console.log(users);
+      setSearchResults(users);
       // console.log("Emty")
     } else {
       console.error(error);
+      setSearchResults([]);
     }
   };
 
@@ -122,6 +129,16 @@ export default function Main() {
           <form action="">
             <input onChange={handleSearch} type="text" placeholder="Search" />
           </form>
+          {searchResults.length > 0 && (
+            <div className={styles.searchResults}>
+              <h3>Search Results:</h3>
+              <ul>
+                {searchResults.map((user, index) => (
+                  <li key={index}>{user.name}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
         <div className={styles.navbtn}>
           <Link href={"/main"}>
