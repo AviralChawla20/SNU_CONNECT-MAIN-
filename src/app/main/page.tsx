@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "./page.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
@@ -7,6 +7,25 @@ import Link from "next/link";
 
 export default function Main() {
   const email = localStorage.getItem("email");
+  useEffect(() => {
+
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch("/api/tweets", { method: "GET" });
+        if (response.ok) {
+          const data = await response.json();
+          console.log(data)
+
+        } else {
+          throw new Error("Failed to fetch user data");
+        }
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUserData(); // Call the fetchUserData function when component mounts
+  }, []);
   console.log(email);
   return (
     <main className={styles.main}>
@@ -38,7 +57,7 @@ export default function Main() {
         </div>
         <div className={styles.section2}>
           <div className={styles.header}>
-            <h1>What's on your mind</h1>
+            <h1>What&apos;s on your mind</h1>
           </div>
           <div className={styles.blog}>
             <form action="">

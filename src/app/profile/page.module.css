@@ -90,6 +90,11 @@
   border: none;
   border-bottom: 2px solid black;
   margin-bottom: 20px;
+  font-family: "Platypi", sans-serif;
+  font-weight: bold;
+}
+.credbox1 label {
+  font-size: 1.2rem;
 }
 .credbox1 .btn {
   margin-top: 10px;
@@ -102,6 +107,9 @@
   font-family: "Platypi", sans-serif;
   animation: slidein 1s ease-in-out;
 }
+.credbox2 label {
+  font-size: 1.2rem;
+}
 .credbox2 input {
   height: 2rem;
   width: 20rem;
@@ -110,6 +118,8 @@
   border: none;
   border-bottom: 2px solid black;
   margin-bottom: 20px;
+  font-family: "Platypi", sans-serif;
+  font-weight: bold;
 }
 
 .credbox2 :placeholder-shown {
