@@ -7,7 +7,7 @@ import { supabase } from '../../../../utils/supabase/client'
 const POST = async (req: any) => {
     try {
         const reqBody = await req.json();
-        const { email, company, role, stipend, location} = reqBody
+        const { email, company, role, stipend, location, description} = reqBody
         console.log(reqBody)
         console.log(email)
         var name2 = ""
@@ -29,7 +29,7 @@ const POST = async (req: any) => {
         const { data, error } = await supabase
         .from('internships')
         .insert([
-            { role: role, email: email, company: company, location: location, stipend: stipend, name: name2},
+            { role: role, email: email, company: company, location: location, stipend: stipend, name: name2, description: description},
         ])
             .select()
         if (data) {
