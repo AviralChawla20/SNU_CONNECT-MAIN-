@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+User Story 1: As a user, I want to sign up to the platform so that I can access
+personalized accounts and platform features.
+Acceptance Criteria: Users should be able to access a registration page.
+The registration page should prompt users to provide necessary information
+such as email, username, and password. Upon successful registration, users
+should gain access to personalized accounts and platform features.
 
-## SNUCONNECT 
+User Story 2: As a user, I want to login to the website so that I can
+seamlessly access my personalized account and relevant platform features.
+Acceptance Criteria: Users should access a secure login interface.
+The login interface should require users to enter their credentials, including
+username and password. Successful login should grant users access to their
+personalized accounts and relevant platform features.
 
-First, run the development server:
+User Story 3: As a user, I want to browse user profiles so that I can make
+informed connections and engagements.
+Acceptance Criteria: Users should access a feature allowing them to
+browse comprehensive user profiles. The feature should include options to
+filter and search based on criteria such as name, interests, and affiliations.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+User Story 4: As a user, I want to chat with another user so that I can engage
+in real-time conversations.
+Acceptance Criteria: Users should access a chat feature enabling real-time
+text-based communication, emojis, and file sharing. The chat feature should
+facilitate seamless message delivery, read receipts, and notifications for
+interactive engagement.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+User Story 5: As an alumni, I want to post Internship Opportunities so that I
+can connect with potential candidates.
+Acceptance Criteria: Alumni should access a "Post Internship
+Opportunities" feature. The feature should allow alumni to submit detailed
+internship listings including company information, job descriptions, and
+application instructions.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+User Story 6: As a student, I want to view internship opportunities so that I
+can explore potential career paths.
+Acceptance Criteria: Students should access a dedicated "Internship
+Opportunities" section from the main navigation menu. The section should
+display organized listings with essential details about internship
+opportunities.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+User Story 7: As an admin, I want to manage internship opportunities posted
+so that I can ensure relevance and accuracy for students.
+Acceptance Criteria: Admins should access a centralized dashboard.
+The dashboard should enable admins to view, edit, approve, or remove
+internship listings posted by alumni.
 
-## Learn More
+User Story 8: As a user, I want to update my account information effortlessly
+so that I can maintain accurate details.
+Acceptance Criteria: Users should have the ability to update their account
+information. The platform should ensure convenience and user satisfaction
+with the account update functionality.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+User Story 9: As an admin, I want to manage other users' accounts efficiently
+so that I can ensure platform security and user experience.
+Acceptance Criteria: Admins should access a dedicated interface for
+managing user accounts. The interface should enable admins to view, edit,
+deactivate, and apply security protocols as necessary.
