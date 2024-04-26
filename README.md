@@ -1,3 +1,5 @@
+# SNU Connect
+## User Stories
 User Story 1: As a user, I want to sign up to the platform so that I can access
 personalized accounts and platform features.
 Acceptance Criteria: Users should be able to access a registration page.
@@ -56,3 +58,8 @@ so that I can ensure platform security and user experience.
 Acceptance Criteria: Admins should access a dedicated interface for
 managing user accounts. The interface should enable admins to view, edit,
 deactivate, and apply security protocols as necessary.
+
+## UML Diagrams
+
+### Use Case Diagram
+
