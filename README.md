@@ -71,3 +71,4 @@ deactivate, and apply security protocols as necessary.
 ![image](https://github.com/amansagar0403/SNU_CONNECT-MAIN-/assets/89197939/b708dedd-dcec-4105-9504-e227de720f5b)
 
 ### Activity Diagram
+![image](https://github.com/amansagar0403/SNU_CONNECT-MAIN-/assets/89197939/fca2bb17-911b-4e2c-b25b-4a098ef01aba)
