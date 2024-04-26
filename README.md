@@ -62,7 +62,7 @@ deactivate, and apply security protocols as necessary.
 ## UML Diagrams
 
 ### Use Case Diagram
-![image](https://github.com/amansagar0403/SNU_CONNECT-MAIN-/assets/89126000/d42547f8-3557-4a9b-8da6-5735fc2e1df2)
+![image](https://github.com/amansagar0403/SNU_CONNECT-MAIN-/assets/89197939/191d4b62-fa98-4365-bc18-d036c4e811ff)
 
 ### Class Diagram
 ![image](https://github.com/amansagar0403/SNU_CONNECT-MAIN-/assets/89197939/1d985548-8c49-48fc-ab0b-d69c2551456b)
