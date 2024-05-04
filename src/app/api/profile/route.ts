@@ -4,30 +4,34 @@ import { supabase } from '../../../../utils/supabase/client'
 
 
 
-const POST = async (req: any) => {
+const POST = async (req: any): Promise<void | Response> => {
     try {
         const reqBody = await req.json();
-        const { email, name, phone, github, linkedin } = reqBody
-        console.log(reqBody)
-        console.log(email)
+        const { email, name, phone, github, linkedin } = reqBody;
+        
         const { data, error } = await supabase
-        .from('users')
-        .update({ phone: phone, github: github, linkedin: linkedin, name: name})
-        .eq('email', email)
-            .select()
-        if (data) {
-            // console.log("Hello")
-            return NextResponse.json({ data: data }, {status: 200})
+            .from('users')
+            .update({ phone, github, linkedin, name })
+            .eq('email', email)
+            .select();
+
+        if (error) {
+            // Handle database update error
+            throw new Error(error.message || "Failed to update user profile");
         }
 
-
-        return NextResponse.json({ message: "Updated Successfully" }, { status: 200 })
+        if (data) {
+            // Database update was successful
+            return NextResponse.json({ data }, { status: 200 });
+        } else {
+            // No data returned, but no error occurred (possibly no matching user)
+            return NextResponse.json({ message: "Updated Successfully" }, { status: 200 });
+        }
+    } catch (error: any) {
+        console.error("Error:", error.message);
+        return NextResponse.json({ error: "Invalid request body" }, { status: 400 });
     }
-    catch (error) {
-        console.log("haha")
-        return { error: "Invalid request body" }
-    }
-}
+};
 
 const GET = async (req: any) => {
     try {
